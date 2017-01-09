@@ -1,0 +1,25 @@
+---
+type: service_template
+subtype: container
+name: maven-build
+description: maven build
+container:
+  resources:
+    mem_mib: 256
+    cpu_cores: 0.1
+    disk_gb: 10
+  image: "dinardalvi/ubuntu14.04"
+  docker_options: ""
+  command: "sh -c 'cd /src && ls -ltr && mvn package -DskipTests'"
+inputs:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+  parameters:
+    code:
+outputs:
+  artifacts:
+    binary:
+      path: "/src"
+labels:
+  "ax_ea_docker_enable": "{ \"graph-storage-name\": \"devopsbuildstorage\", \"graph-storage-size\": \"10Gi\" }"
