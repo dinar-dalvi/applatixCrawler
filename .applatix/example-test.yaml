@@ -5,9 +5,9 @@ name: maven-test
 description: test example
 container:
   resources:
-    mem_mib: 256
-    cpu_cores: 0.1
-    disk_gb: 10
+    mem_mib: 512
+    cpu_cores: 0.5
+    disk_gb: 20
   image: "dinardalvi/ubuntu14.04"
   docker_options: ""
   command: "sh -c 'cd /src && ls -ltr && mvn clean test"
