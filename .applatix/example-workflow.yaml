@@ -1,7 +1,7 @@
 ---
 type: service_template
 subtype: workflow
-name: c-workflow
+name: maven-workflow
 description: workflow example
 inputs:
   parameters:
@@ -16,10 +16,10 @@ steps:
     template: maven-build
     parameters:
       code: "%%steps.checkout.code%%"
-- # test1:
-  #  template: c-test
-  #  parameters:
-  #  binary: "%%steps.build.binary%%"
+-  test1:
+    template: c-test
+    parameters:
+    binary: "%%steps.build.binary%%"
   #test2:
    # template: c-test
     #parameters:
