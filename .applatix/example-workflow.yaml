@@ -17,7 +17,7 @@ steps:
     parameters:
       code: "%%steps.checkout.code%%"
 -  test1:
-    template: c-test
+    template: maven-test
     parameters:
     binary: "%%steps.build.binary%%"
   #test2:
