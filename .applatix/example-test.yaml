@@ -5,7 +5,7 @@ name: maven-test
 description: test example
 container:
   resources:
-    mem_mib: 512
+    mem_mib: 1024
     cpu_cores: 0.5
     disk_gb: 20
   image: "dinardalvi/ubuntu14.04"
