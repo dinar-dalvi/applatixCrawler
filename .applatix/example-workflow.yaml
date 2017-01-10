@@ -20,7 +20,7 @@ steps:
     template: maven-test
     parameters:
       binary: "%%steps.build.binary%%"
-test2:
+  test2:
     template: maven-test
     parameters:
       binary: "%%steps.build.binary%%"      
