@@ -16,37 +16,78 @@ steps:
     template: maven-build
     parameters:
       code: "%%steps.checkout.code%%"
-- test1:
+- JUnit-test1:
     template: maven-test
     parameters:
       binary: "%%steps.build.binary%%"
-  test2:
+  JUnit-test2:
     template: maven-test
     parameters:
-      binary: "%%steps.build.binary%%"      
-  #test2:
-   # template: c-test
-    #parameters:
-     # code: "%%steps.checkout.code%%"
-      #binary: "%%steps.build.binary%%"
-  #test3:
-   # template: c-test
-    #parameters:
-     # code: "%%steps.checkout.code%%"
-      #binary: "%%steps.build.binary%%"
-  #test4:
-   # template: c-test
-    #parameters:
-     # code: "%%steps.checkout.code%%"
-      #binary: "%%steps.build.binary%%"
-  #test5:
-   # template: c-test
-    #parameters:
-     # code: "%%steps.checkout.code%%"
-      #binary: "%%steps.build.binary%%"
-#- release:
-#    template: example-release
-#    parameters:
-#      code: "%%steps.checkout.code%%"
-#      binary: "%%steps.build.binary%%"
+      binary: "%%steps.build.binary%%"
+  JUnit-test3:
+    template: maven-test
+    parameters:
+      binary: "%%steps.build.binary%%"
+  JUnit-test4:
+    template: maven-test
+    parameters:
+      binary: "%%steps.build.binary%%"
+  JUnit-test5:
+    template: maven-test
+    parameters:
+      binary: "%%steps.build.binary%%"
+  JUnit-test6:
+    template: maven-test
+    parameters:
+      binary: "%%steps.build.binary%%"
+  JUnit-test7:
+    template: maven-test
+    parameters:
+      binary: "%%steps.build.binary%%"
+  JUnit-test8:
+    template: maven-test
+    parameters:
+      binary: "%%steps.build.binary%%"
+labels:
+  release: development
+  milestone: m7      
 
+---
+type: policy
+name: Applatix Build Policy
+description: Policy to trigger build for all events
+template: maven-workflow
+parameters:
+  namespace: "applatixCrawler"
+  version: "development"
+notifications:
+  -
+    when:
+      - on_start
+      - on_success
+      - on_failure
+    whom:
+      - committer
+      - author
+  -
+    when:
+      - on_change
+    whom:
+      - j7l5a4s7j9c5t9m3@applatix.slack.com
+when:
+  -
+    event: on_push
+    target_branches:
+      - ".*"
+  -
+    event: on_pull_request
+    target_branches:
+      - ".*"
+  -
+    event: on_pull_request_merge
+    target_branches:
+      - ".*"
+labels:
+  k1: v11
+  k2: v22
+  k3: v33
