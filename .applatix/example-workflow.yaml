@@ -16,10 +16,14 @@ steps:
     template: maven-build
     parameters:
       code: "%%steps.checkout.code%%"
--  test1:
+- test1:
     template: maven-test
     parameters:
       binary: "%%steps.build.binary%%"
+test2:
+    template: maven-test
+    parameters:
+      binary: "%%steps.build.binary%%"      
   #test2:
    # template: c-test
     #parameters:
